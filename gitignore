@@ -1,4 +1,5 @@
 *.jpg
+*.png
 *.docx
 *.Rhistory
 /.Rproj.user/
