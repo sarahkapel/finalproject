@@ -4,40 +4,52 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Database is complete | Creating a Database for Aspen Seedlings</title>
-  <meta name="description" content="<p>For this week’s assignment in Reproducible Science 2023, I have created a
-bookdown. This explains the process I used to create aspen seedling database
-for my planting project.</p>" />
+  <title>Chapter 4 Database is complete | WILD 6900 Final Project</title>
+  <meta name="description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
   <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Database is complete | Creating a Database for Aspen Seedlings" />
+  <meta property="og:title" content="Chapter 4 Database is complete | WILD 6900 Final Project" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="<p>For this week’s assignment in Reproducible Science 2023, I have created a
-bookdown. This explains the process I used to create aspen seedling database
-for my planting project.</p>" />
+  <meta property="og:description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Database is complete | Creating a Database for Aspen Seedlings" />
+  <meta name="twitter:title" content="Chapter 4 Database is complete | WILD 6900 Final Project" />
   
-  <meta name="twitter:description" content="<p>For this week’s assignment in Reproducible Science 2023, I have created a
-bookdown. This explains the process I used to create aspen seedling database
-for my planting project.</p>" />
+  <meta name="twitter:description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
   
 
 <meta name="author" content="Sarah Kapel" />
 
 
-<meta name="date" content="2023-03-19" />
+<meta name="date" content="2023-04-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-
+<link rel="prev" href="building-the-aspen-seedling-database.html"/>
+<link rel="next" href="simulating-data-and-using-ggplot.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -142,16 +154,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">A Minimal Book Example</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Building the aspen seedling database</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
+<li class="chapter" data-level="2" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html"><i class="fa fa-check"></i><b>2</b> About my research and re-organizing my data</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#database-structure"><i class="fa fa-check"></i><b>1.1</b> Database structure</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#creating-the-database"><i class="fa fa-check"></i><b>1.2</b> Creating the database</a>
+<li class="chapter" data-level="2.1" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html#about-my-research"><i class="fa fa-check"></i><b>2.1</b> About my research</a></li>
+<li class="chapter" data-level="2.2" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html#organizing-my-data"><i class="fa fa-check"></i><b>2.2</b> Organizing my data</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="index.html"><a href="index.html#creating-the-measurments-table"><i class="fa fa-check"></i><b>1.2.1</b> Creating the measurments table</a></li>
-<li class="chapter" data-level="1.2.2" data-path="index.html"><a href="index.html#creating-the-other-tables"><i class="fa fa-check"></i><b>1.2.2</b> Creating the other tables</a></li>
+<li class="chapter" data-level="2.2.1" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html#my-old-data"><i class="fa fa-check"></i><b>2.2.1</b> My old data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html#my-new-data"><i class="fa fa-check"></i><b>2.2.2</b> My new data</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="database-is-complete.html"><a href="database-is-complete.html"><i class="fa fa-check"></i><b>2</b> Database is complete</a></li>
+<li class="chapter" data-level="3" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html"><i class="fa fa-check"></i><b>3</b> Building the aspen seedling database</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#database-structure"><i class="fa fa-check"></i><b>3.1</b> Database structure</a></li>
+<li class="chapter" data-level="3.2" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-database"><i class="fa fa-check"></i><b>3.2</b> Creating the database</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-measurements-table"><i class="fa fa-check"></i><b>3.2.1</b> Creating the measurements table</a></li>
+<li class="chapter" data-level="3.2.2" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-sites-table"><i class="fa fa-check"></i><b>3.2.2</b> Creating the sites table</a></li>
+<li class="chapter" data-level="3.2.3" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-soil-moisture-table"><i class="fa fa-check"></i><b>3.2.3</b> Creating the soil moisture table</a></li>
+<li class="chapter" data-level="3.2.4" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-structures-table"><i class="fa fa-check"></i><b>3.2.4</b> Creating the structures table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="database-is-complete.html"><a href="database-is-complete.html"><i class="fa fa-check"></i><b>4</b> Database is complete</a></li>
+<li class="chapter" data-level="5" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html"><i class="fa fa-check"></i><b>5</b> Simulating data and using ggplot</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#simulating-the-data"><i class="fa fa-check"></i><b>5.1</b> Simulating the data</a></li>
+<li class="chapter" data-level="5.2" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#plotting-the-data-using-ggplot"><i class="fa fa-check"></i><b>5.2</b> Plotting the data using ggplot</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#plot-1"><i class="fa fa-check"></i><b>5.2.1</b> Plot 1</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -164,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Creating a Database for Aspen Seedlings</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">WILD 6900 Final Project</a>
           </h1>
         </div>
 
@@ -172,10 +204,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="database-is-complete" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Database is complete<a href="database-is-complete.html#database-is-complete" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is the final result of creating our aspen database.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="database-is-complete.html#cb5-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">serve_book</span>()</span></code></pre></div>
+<div id="database-is-complete" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Database is complete<a href="database-is-complete.html#database-is-complete" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Yay! I have successfully created an aspen database. This will not be necessary for my research project moving forward. However, this experience was valuable to help me organize my thoughts and figure out the best way to compartmentalize my data.</p>
 
 </div>
             </section>
@@ -183,8 +214,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="building-the-aspen-seedling-database.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="simulating-data-and-using-ggplot.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -215,7 +246,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-database.Rmd",
 "text": "Edit"
 },
 "history": {
