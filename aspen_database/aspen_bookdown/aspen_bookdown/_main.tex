@@ -1,0 +1,424 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\title{WILD 6900 Final Project}
+\author{Sarah Kapel}
+\date{2023-04-27}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={WILD 6900 Final Project},
+  pdfauthor={Sarah Kapel},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[]{natbib}
+\bibliographystyle{plainnat}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\hypertarget{about}{%
+\chapter{About}\label{about}}
+
+This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bookdown}\SpecialCharTok{::}\FunctionTok{serve\_book}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{about-my-research-and-re-organizing-my-data}{%
+\chapter{About my research and re-organizing my data}\label{about-my-research-and-re-organizing-my-data}}
+
+In this chapter I will explain my research project. I will also explain how I
+reorganized initial data I complied because I learned some important lessons in
+spreadsheets.
+
+\hypertarget{about-my-research}{%
+\section{About my research}\label{about-my-research}}
+
+Aspen are an important foundational forest species. Populations in the west are
+declining due to herbivory, altered disturbance regimes, drought, and climate
+change. Restoration of the species has historically been accomplished by
+clear-felling existing stands to encourage vegetative suckering. This works well
+to regenerate existing clones with healthy rootstock and herbivory pressure is
+low. However, this approach cannot be used where aspen stands do not already
+exist and limits genetic variation. Outplanting with seedlings is an
+understudied aspect of aspen restoration. A major opportunity presented by the
+increase in large fires in the West is planting seedlings in fire footprints.
+For my research project, I will investigate the feasibility of planting aspen
+seedlings in a post-fire environment. This project was conducted in three
+recently burned forests across the Southwest. Seedlings were planted with
+three treatments: 1) in the root pockets of snags, 2) along logs, 3) in open
+spaces. We believe snags may be beneficial because moisture will be wicked to
+the seedlings and there may be higher soil moisture in the root pockets. We will
+investigate what treatments are beneficial to seedling growth and vigor as well
+as azimuth around the structure. We also will investigate differences in soil
+moisture amongst treatments. Finally, this project will look at the efficacy of
+vexar tubing to protect aspen seedlings from herbivory.
+
+My field work started in the fall of 2022 when I planted \textasciitilde360 seedlings per
+fire footprint. At this time I recorded information for each
+seedling. This included baseline measurements of the seedlings root collar
+diameter and height. I recorded the seedlings ground cover in various classes
+and information on the nearest woody neighbor within 2 meters. I also took
+information about each treatment and the site. I will come back to each site
+this summer to remeasure those that survive. I will also take soil moisture
+measurements over the summer from data loggers I install.
+
+\hypertarget{organizing-my-data}{%
+\section{Organizing my data}\label{organizing-my-data}}
+
+Prior to this class, I complied all my digitized paper datasheets onto one
+single excel file. I realized that this would be problematic for many reasons.
+It took time to correct my mistakes, but ultimately it will help me in the long
+run.
+
+\hypertarget{my-old-data}{%
+\subsection{My old data}\label{my-old-data}}
+
+Here is a screenshot of how my old data looked.
+
+\begin{figure}
+\centering
+\includegraphics{old_data.png}
+\caption{Fig. 1: Diagram of database structure}
+\end{figure}
+
+I color coded objects, merged cells, and had multiple sheets.
+
+\hypertarget{my-new-data}{%
+\subsection{My new data}\label{my-new-data}}
+
+From this class, I learned the error in my ways and I quickly remade my
+datasheets..
+
+Here is a screenshot of my new data.
+
+\begin{figure}
+\centering
+\includegraphics{new_data.png}
+\caption{Fig. 1: Diagram of database structure}
+\end{figure}
+
+First, I used csv instead of excel since that is better compatible with R.
+I removed any color coding since that will not translate in R. I also removed
+merged cells since that will cause issues working in R. I also separated all
+pages from the one excel file into various single page csv documents.
+
+\hypertarget{cross}{%
+\chapter{Cross-references}\label{cross}}
+
+Cross-references make it easier for your readers to find and link to elements in your book.
+
+\hypertarget{chapters-and-sub-chapters}{%
+\section{Chapters and sub-chapters}\label{chapters-and-sub-chapters}}
+
+There are two steps to cross-reference any heading:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Label the heading: \texttt{\#\ Hello\ world\ \{\#nice-label\}}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Leave the label off if you like the automated heading generated based on your heading title: for example, \texttt{\#\ Hello\ world} = \texttt{\#\ Hello\ world\ \{\#hello-world\}}.
+  \item
+    To label an un-numbered heading, use: \texttt{\#\ Hello\ world\ \{-\#nice-label\}} or \texttt{\{\#\ Hello\ world\ .unnumbered\}}.
+  \end{itemize}
+\item
+  Next, reference the labeled heading anywhere in the text using \texttt{\textbackslash{}@ref(nice-label)}; for example, please see Chapter \ref{cross}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If you prefer text as the link instead of a numbered reference use: \protect\hyperlink{cross}{any text you want can go here}.
+  \end{itemize}
+\end{enumerate}
+
+\hypertarget{captioned-figures-and-tables}{%
+\section{Captioned figures and tables}\label{captioned-figures-and-tables}}
+
+Figures and tables \emph{with captions} can also be cross-referenced from elsewhere in your book using \texttt{\textbackslash{}@ref(fig:chunk-label)} and \texttt{\textbackslash{}@ref(tab:chunk-label)}, respectively.
+
+See Figure \ref{fig:nice-fig}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, .}\DecValTok{1}\NormalTok{, .}\DecValTok{1}\NormalTok{))}
+\FunctionTok{plot}\NormalTok{(pressure, }\AttributeTok{type =} \StringTok{\textquotesingle{}b\textquotesingle{}}\NormalTok{, }\AttributeTok{pch =} \DecValTok{19}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{_main_files/figure-latex/nice-fig-1} 
+
+}
+
+\caption{Here is a nice figure!}\label{fig:nice-fig}
+\end{figure}
+
+Don't miss Table \ref{tab:nice-tab}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(}
+  \FunctionTok{head}\NormalTok{(pressure, }\DecValTok{10}\NormalTok{), }\AttributeTok{caption =} \StringTok{\textquotesingle{}Here is a nice table!\textquotesingle{}}\NormalTok{,}
+  \AttributeTok{booktabs =} \ConstantTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:nice-tab}Here is a nice table!}
+\centering
+\begin{tabular}[t]{rr}
+\toprule
+temperature & pressure\\
+\midrule
+0 & 0.0002\\
+20 & 0.0012\\
+40 & 0.0060\\
+60 & 0.0300\\
+80 & 0.0900\\
+\addlinespace
+100 & 0.2700\\
+120 & 0.7500\\
+140 & 1.8500\\
+160 & 4.2000\\
+180 & 8.8000\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hypertarget{simulating-data-and-using-ggplot}{%
+\chapter{Simulating data and using ggplot}\label{simulating-data-and-using-ggplot}}
+
+In this chapter, I will show how I used simulated data to visualize some ``fake''
+findings.
+
+\hypertarget{simulating-the-data}{%
+\section{Simulating the data}\label{simulating-the-data}}
+
+First I simulated data to run. Below is very simple code I used to create
+some data. I first manipulated the data using a binomial distribution. This
+randomly selected some seedlings to survive and some to die. Of those that
+survived, I increased the height by 40\% and the RCD by 30\%. Then I manually
+added more weight to the snag treatment.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# load packages }
+
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(lme4)}
+
+\NormalTok{horton\_man }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"horton\_man.csv"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(site\_no)}\SpecialCharTok{==} \ConstantTok{FALSE}\NormalTok{)}
+
+\CommentTok{\# this is remnant code on how I did that: }
+\CommentTok{\# horton\_man \textless{}{-} horton \%\textgreater{}\%}
+  \CommentTok{\# mutate(measurement\_id = case\_when(tag\_id != "NA" \textasciitilde{}  paste0(tag\_id,"{-}02")),}
+        \CommentTok{\# status = rbinom(n=350,prob = .75, size = 1),}
+        \CommentTok{\# height = case\_when(status==1 \textasciitilde{} height*1.4, \# increase height by 40\%}
+                          \CommentTok{\#  status==0 \textasciitilde{} height),}
+        \CommentTok{\# rcd = case\_when(status == 1 \textasciitilde{} rcd*1.3, \# increase rcd by 30\%}
+                        \CommentTok{\# status == 0 \textasciitilde{} rcd)) \%\textgreater{}\% }
+  \CommentTok{\# filter(is.na(site\_no) == FALSE)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{plotting-the-data-using-ggplot}{%
+\section{Plotting the data using ggplot}\label{plotting-the-data-using-ggplot}}
+
+\hypertarget{plot-1}{%
+\subsection{Plot 1}\label{plot-1}}
+
+Below is the code I used to generate a bar plot displaying how many seedlings
+survived in each treatment group. This is a simple plot but it does display what
+treatment yielded the most seedling survival.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(viridis)}
+
+\NormalTok{horton\_man }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(status }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ structure, }\AttributeTok{fill =}\NormalTok{ status)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill =} \StringTok{"light blue"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{ (}\AttributeTok{x =} \StringTok{"Treatment"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{,}
+        \AttributeTok{title =} \StringTok{"Seedling Survival by Treatment"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_light}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/ggplot-1.pdf}
+\#\#\# Plot 2
+
+Below is code I used to plot the root collar diameter and height of each
+seedling in the Horton fire. I wanted to compare growth of those that survive
+from the time of planting to the second year.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(viridis)}
+\FunctionTok{library}\NormalTok{(patchwork)}
+
+\NormalTok{p1 }\OtherTok{\textless{}{-}}\NormalTok{ horton\_man }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(status }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ rcd, }\AttributeTok{y =}\NormalTok{ height, }\AttributeTok{color =}\NormalTok{ tag\_id)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{structure) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Root Collar Diameter (mm)"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Height to Terminal Bud (mm)"}\NormalTok{, }
+       \AttributeTok{title =} \StringTok{"Year 1"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_light}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_viridis}\NormalTok{(}\AttributeTok{option =} \StringTok{"magma"}\NormalTok{) }
+
+\NormalTok{p2 }\OtherTok{\textless{}{-}}\NormalTok{ horton\_man }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{as\_tibble}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{filter}\NormalTok{(status }\SpecialCharTok{==} \DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ rcd\_2, }\AttributeTok{y =}\NormalTok{ height\_2, }\AttributeTok{color =}\NormalTok{ tag\_id)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{alpha =} \FloatTok{0.7}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{structure) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Root Collar Diameter (mm)"}\NormalTok{, }
+       \AttributeTok{y =} \StringTok{"Height to Terminal Bud (mm)"}\NormalTok{, }
+       \AttributeTok{title =} \StringTok{"Year 2"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_light}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_viridis}\NormalTok{(}\AttributeTok{option =} \StringTok{"magma"}\NormalTok{) }
+
+\NormalTok{p1 }\SpecialCharTok{|}\NormalTok{ p2}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{_main_files/figure-latex/ggplot2-1.pdf}
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

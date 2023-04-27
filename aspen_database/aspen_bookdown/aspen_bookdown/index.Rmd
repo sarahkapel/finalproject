@@ -1,0 +1,42 @@
+--- 
+title: "WILD 6900 Final Project"
+author: "Sarah Kapel"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+description: |
+  This bookdown contains my final project for Reproducible Science 2023. For 
+  this project, I used my own data from my research. The first chapter will 
+  provide some context to my research and also explain how I reorganized my 
+  original datasheets after learning about good spreadsheet practices. In the 
+  second chapter,I demonstrate how I created a database for each aspen seedling. 
+  In the third chapter, I visualize simulated data to see how to illustrate 
+  my future results. 
+  
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# About
+
+  This bookdown contains my final project for Reproducible Science 2023. For 
+  this project, I used my own data from my research. The first chapter will 
+  provide some context to my research and also explain how I reorganized my 
+  original datasheets after learning about good spreadsheet practices. In the 
+  second chapter,I demonstrate how I created a database for each aspen seedling. 
+  In the third chapter, I visualize simulated data to see how to illustrate 
+  my future results. 
+
+```{r eval=FALSE}
+bookdown::serve_book()
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

@@ -1,0 +1,66 @@
+# About my research and re-organizing my data
+
+In this chapter I will explain my research project. I will also explain how I 
+reorganized initial data I complied because I learned some important lessons in
+spreadsheets. 
+
+## About my research
+
+Aspen are an important foundational forest species. Populations in the west are 
+declining due to herbivory, altered disturbance regimes, drought, and climate 
+change. Restoration of the species has historically been accomplished by 
+clear-felling existing stands to encourage vegetative suckering. This works well 
+to regenerate existing clones with healthy rootstock and herbivory pressure is 
+low. However, this approach cannot be used where aspen stands do not already 
+exist and limits genetic variation. Outplanting with seedlings is an 
+understudied aspect of aspen restoration. A major opportunity presented by the 
+increase in large fires in the West is planting seedlings in fire footprints. 
+For my research project, I will investigate the feasibility of planting aspen 
+seedlings in a post-fire environment. This project was conducted in three 
+recently burned forests across the Southwest. Seedlings were planted with 
+three treatments: 1) in the root pockets of snags, 2) along logs, 3) in open 
+spaces. We believe snags may be beneficial because moisture will be wicked to 
+the seedlings and there may be higher soil moisture in the root pockets. We will 
+investigate what treatments are beneficial to seedling growth and vigor as well 
+as azimuth around the structure. We also will investigate differences in soil 
+moisture amongst treatments. Finally, this project will look at the efficacy of 
+vexar tubing to protect aspen seedlings from herbivory. 
+
+My field work started in the fall of 2022 when I planted ~360 seedlings per 
+fire footprint. At this time I recorded information for each 
+seedling. This included baseline measurements of the seedlings root collar
+diameter and height. I recorded the seedlings ground cover in various classes 
+and information on the nearest woody neighbor within 2 meters. I also took 
+information about each treatment and the site. I will come back to each site 
+this summer to remeasure those that survive. I will also take soil moisture 
+measurements over the summer from data loggers I install. 
+
+## Organizing my data 
+
+Prior to this class, I complied all my digitized paper datasheets onto one 
+single excel file. I realized that this would be problematic for many reasons.
+It took time to correct my mistakes, but ultimately it will help me in the long 
+run. 
+
+### My old data 
+
+Here is a screenshot of how my old data looked. 
+
+![Fig. 1: Diagram of database structure](old_data.png)
+
+I color coded objects, merged cells, and had multiple sheets. 
+
+### My new data 
+
+From this class, I learned the error in my ways and I quickly remade my 
+datasheets.. 
+
+Here is a screenshot of my new data. 
+
+![Fig. 1: Diagram of database structure](new_data.png)
+
+
+First, I used csv instead of excel since that is better compatible with R. 
+I removed any color coding since that will not translate in R. I also removed
+merged cells since that will cause issues working in R. I also separated all 
+pages from the one excel file into various single page csv documents. 

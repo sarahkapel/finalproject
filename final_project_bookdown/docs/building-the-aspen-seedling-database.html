@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Building the aspen seedling database | WILD 6900 Final Project</title>
+  <meta name="description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Building the aspen seedling database | WILD 6900 Final Project" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Building the aspen seedling database | WILD 6900 Final Project" />
+  
+  <meta name="twitter:description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
+  
+
+<meta name="author" content="Sarah Kapel" />
+
+
+<meta name="date" content="2023-04-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="about-my-research-and-re-organizing-my-data.html"/>
+<link rel="next" href="database-is-complete.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
+<li class="chapter" data-level="2" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html"><i class="fa fa-check"></i><b>2</b> About my research and re-organizing my data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html#about-my-research"><i class="fa fa-check"></i><b>2.1</b> About my research</a></li>
+<li class="chapter" data-level="2.2" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html#organizing-my-data"><i class="fa fa-check"></i><b>2.2</b> Organizing my data</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html#my-old-data"><i class="fa fa-check"></i><b>2.2.1</b> My old data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="about-my-research-and-re-organizing-my-data.html"><a href="about-my-research-and-re-organizing-my-data.html#my-new-data"><i class="fa fa-check"></i><b>2.2.2</b> My new data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html"><i class="fa fa-check"></i><b>3</b> Building the aspen seedling database</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#database-structure"><i class="fa fa-check"></i><b>3.1</b> Database structure</a></li>
+<li class="chapter" data-level="3.2" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-database"><i class="fa fa-check"></i><b>3.2</b> Creating the database</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-measurements-table"><i class="fa fa-check"></i><b>3.2.1</b> Creating the measurements table</a></li>
+<li class="chapter" data-level="3.2.2" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-sites-table"><i class="fa fa-check"></i><b>3.2.2</b> Creating the sites table</a></li>
+<li class="chapter" data-level="3.2.3" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-soil-moisture-table"><i class="fa fa-check"></i><b>3.2.3</b> Creating the soil moisture table</a></li>
+<li class="chapter" data-level="3.2.4" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-structures-table"><i class="fa fa-check"></i><b>3.2.4</b> Creating the structures table</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="database-is-complete.html"><a href="database-is-complete.html"><i class="fa fa-check"></i><b>4</b> Database is complete</a></li>
+<li class="chapter" data-level="5" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html"><i class="fa fa-check"></i><b>5</b> Simulating data and using ggplot</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#simulating-the-data"><i class="fa fa-check"></i><b>5.1</b> Simulating the data</a></li>
+<li class="chapter" data-level="5.2" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#plotting-the-data-using-ggplot"><i class="fa fa-check"></i><b>5.2</b> Plotting the data using ggplot</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#plot-1"><i class="fa fa-check"></i><b>5.2.1</b> Plot 1</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">WILD 6900 Final Project</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="building-the-aspen-seedling-database" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Building the aspen seedling database<a href="building-the-aspen-seedling-database.html#building-the-aspen-seedling-database" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="database-structure" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Database structure<a href="building-the-aspen-seedling-database.html#database-structure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>I will be constructing a database to organize my data. I have roughly 1,000 seedlings planted in four sites under three treatments across the Southwest. For this project, I will follow this database structure.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:diagram"></span>
+<img src="database_structure.png" alt="Diagram illustrating the structure of the database" width="100%" />
+<p class="caption">
+Figure 3.1: Diagram illustrating the structure of the database
+</p>
+</div>
+</div>
+<div id="creating-the-database" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Creating the database<a href="building-the-aspen-seedling-database.html#creating-the-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This is the code we used to create the database. We’ll start with loading our packages. I will need ‘DBI’ and ‘RSQLite’ packages. I will also download some other packages that might be of use later on.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="building-the-aspen-seedling-database.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb2-2"><a href="building-the-aspen-seedling-database.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb2-3"><a href="building-the-aspen-seedling-database.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-4"><a href="building-the-aspen-seedling-database.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-5"><a href="building-the-aspen-seedling-database.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span> (lubridate)</span></code></pre></div>
+<p>First, we’re going to start by establishing a connection to a SQLite database.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="building-the-aspen-seedling-database.html#cb3-1" aria-hidden="true" tabindex="-1"></a>aspen_db <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>())</span></code></pre></div>
+<div id="creating-the-measurements-table" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Creating the measurements table<a href="building-the-aspen-seedling-database.html#creating-the-measurements-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This table includes all baseline-measurement information about each seedling across all three fire footprints. I do not have information from repeat measurements yet. The table includes columns for tag id, measurement id, date, height of seedlings, root collar diameter of seedlings, site information, recorder information, survivorship status, and herbivory status. The primary key is the measurement id which will reflect when the measurement was done.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="building-the-aspen-seedling-database.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(aspen_db, <span class="st">&quot;CREATE TABLE measurements (</span></span>
+<span id="cb4-2"><a href="building-the-aspen-seedling-database.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">tag_id varchar(4) NOT NULL,</span></span>
+<span id="cb4-3"><a href="building-the-aspen-seedling-database.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">measurement_id varchar (5) NOT NULL,</span></span>
+<span id="cb4-4"><a href="building-the-aspen-seedling-database.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">date varchar (10), </span></span>
+<span id="cb4-5"><a href="building-the-aspen-seedling-database.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">height varchar (4), </span></span>
+<span id="cb4-6"><a href="building-the-aspen-seedling-database.html#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">rcd varchar (4),</span></span>
+<span id="cb4-7"><a href="building-the-aspen-seedling-database.html#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">site_name varchar, </span></span>
+<span id="cb4-8"><a href="building-the-aspen-seedling-database.html#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">structure_id varchar (2),</span></span>
+<span id="cb4-9"><a href="building-the-aspen-seedling-database.html#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="st">structure_type varchar (1),</span></span>
+<span id="cb4-10"><a href="building-the-aspen-seedling-database.html#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="st">recorder varchar (10), </span></span>
+<span id="cb4-11"><a href="building-the-aspen-seedling-database.html#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="st">status varchar (5),</span></span>
+<span id="cb4-12"><a href="building-the-aspen-seedling-database.html#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="st">herbivory varchar (1),</span></span>
+<span id="cb4-13"><a href="building-the-aspen-seedling-database.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="st">PRIMARY KEY (measurement_id)</span></span>
+<span id="cb4-14"><a href="building-the-aspen-seedling-database.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="st">);&quot;</span>)</span>
+<span id="cb4-15"><a href="building-the-aspen-seedling-database.html#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="building-the-aspen-seedling-database.html#cb4-16" aria-hidden="true" tabindex="-1"></a>measurements <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;measurements.csv&quot;</span>,<span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-17"><a href="building-the-aspen-seedling-database.html#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="building-the-aspen-seedling-database.html#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(aspen_db, <span class="st">&quot;measuremements&quot;</span>, measurements, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="creating-the-sites-table" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Creating the sites table<a href="building-the-aspen-seedling-database.html#creating-the-sites-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This table includes information about each site within the three fire footprints. There are four sites total. The table includes columns for fire footprint, site id, elevation, and forest name. The primary key is the fire.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="building-the-aspen-seedling-database.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(aspen_db, <span class="st">&quot;CREATE TABLE sites (</span></span>
+<span id="cb5-2"><a href="building-the-aspen-seedling-database.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">fire varchar (9), </span></span>
+<span id="cb5-3"><a href="building-the-aspen-seedling-database.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">site_id varchar (1), </span></span>
+<span id="cb5-4"><a href="building-the-aspen-seedling-database.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">elevation varchar (5), </span></span>
+<span id="cb5-5"><a href="building-the-aspen-seedling-database.html#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">forest varchar (16),</span></span>
+<span id="cb5-6"><a href="building-the-aspen-seedling-database.html#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="st">PRIMARY KEY (site_id)</span></span>
+<span id="cb5-7"><a href="building-the-aspen-seedling-database.html#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">);&quot;</span>)</span>
+<span id="cb5-8"><a href="building-the-aspen-seedling-database.html#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="building-the-aspen-seedling-database.html#cb5-9" aria-hidden="true" tabindex="-1"></a>sites <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;sites.csv&quot;</span>,<span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-10"><a href="building-the-aspen-seedling-database.html#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="building-the-aspen-seedling-database.html#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(aspen_db, <span class="st">&quot;sites&quot;</span>, sites, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="creating-the-soil-moisture-table" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Creating the soil moisture table<a href="building-the-aspen-seedling-database.html#creating-the-soil-moisture-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This table includes information from the soil moisture sensors that will be installed in the Luna fire footprint. There is a column for logger_id, structure_id, and date. The logger id is the primary key. Since I don’t know what this data will include and look like, it is empty for now.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="building-the-aspen-seedling-database.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(aspen_db, <span class="st">&quot;CREATE TABLE soil_moisture (</span></span>
+<span id="cb6-2"><a href="building-the-aspen-seedling-database.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">logger_id varchar (10), </span></span>
+<span id="cb6-3"><a href="building-the-aspen-seedling-database.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">structure_id varchar (3), </span></span>
+<span id="cb6-4"><a href="building-the-aspen-seedling-database.html#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">date varchar (10),</span></span>
+<span id="cb6-5"><a href="building-the-aspen-seedling-database.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">PRIMARY KEY (logger_id)</span></span>
+<span id="cb6-6"><a href="building-the-aspen-seedling-database.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">);&quot;</span>)</span>
+<span id="cb6-7"><a href="building-the-aspen-seedling-database.html#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="building-the-aspen-seedling-database.html#cb6-8" aria-hidden="true" tabindex="-1"></a>soil_moisture <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;soil_moisture.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb6-9"><a href="building-the-aspen-seedling-database.html#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="building-the-aspen-seedling-database.html#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(aspen_db, <span class="st">&quot;soil_moisture&quot;</span>, soil_moisture, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+<div id="creating-the-structures-table" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Creating the structures table<a href="building-the-aspen-seedling-database.html#creating-the-structures-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This table includes information about each structure (or treatment) across all three fire footprints. There are columns for site name, site number, structure number, structure type, structure species (applicable for snags and logs), diameter at breast height (applicable for snags), decay class (applicable for snags and logs), vexar, photo number, and the utm coordinates. The primary key will be the photo number since each structure has it’s own photo.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="building-the-aspen-seedling-database.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(aspen_db, <span class="st">&quot;CREATE TABLE structures (</span></span>
+<span id="cb7-2"><a href="building-the-aspen-seedling-database.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">site_name varchar, </span></span>
+<span id="cb7-3"><a href="building-the-aspen-seedling-database.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">site_no varchar (1), </span></span>
+<span id="cb7-4"><a href="building-the-aspen-seedling-database.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">structure_no varchar (2),</span></span>
+<span id="cb7-5"><a href="building-the-aspen-seedling-database.html#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">structure_type varchar (1),</span></span>
+<span id="cb7-6"><a href="building-the-aspen-seedling-database.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">structure_sp varchar (5), </span></span>
+<span id="cb7-7"><a href="building-the-aspen-seedling-database.html#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">dbh varchar (4), </span></span>
+<span id="cb7-8"><a href="building-the-aspen-seedling-database.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">decay_class varchar (1), </span></span>
+<span id="cb7-9"><a href="building-the-aspen-seedling-database.html#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">vexar varchar (1),</span></span>
+<span id="cb7-10"><a href="building-the-aspen-seedling-database.html#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">photo_no varchar (6), </span></span>
+<span id="cb7-11"><a href="building-the-aspen-seedling-database.html#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">utm_x varchar (15), </span></span>
+<span id="cb7-12"><a href="building-the-aspen-seedling-database.html#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="st">utm_y varchar (15),</span></span>
+<span id="cb7-13"><a href="building-the-aspen-seedling-database.html#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">PRIMARY KEY (photo_no)</span></span>
+<span id="cb7-14"><a href="building-the-aspen-seedling-database.html#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">);&quot;</span>)</span>
+<span id="cb7-15"><a href="building-the-aspen-seedling-database.html#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="building-the-aspen-seedling-database.html#cb7-16" aria-hidden="true" tabindex="-1"></a>structures <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;structures.csv&quot;</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-17"><a href="building-the-aspen-seedling-database.html#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="building-the-aspen-seedling-database.html#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(aspen_db, <span class="st">&quot;structures&quot;</span>, structures, <span class="at">append =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="about-my-research-and-re-organizing-my-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="database-is-complete.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/02-database.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

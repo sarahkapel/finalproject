@@ -1,5 +1,8 @@
 *.jpg
 *.png
+!docs/**/*.png
+!docs/**
+!docs/*.png
 *.docx
 *.Rhistory
 /.Rproj.user/

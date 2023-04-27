@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Background on my research and re-organizing my data | WILD 6900 Final Project</title>
+  <meta name="description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Background on my research and re-organizing my data | WILD 6900 Final Project" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Background on my research and re-organizing my data | WILD 6900 Final Project" />
+  
+  <meta name="twitter:description" content="<p>This bookdown contains my final project for Reproducible Science 2023. For
+this project, I used my own data from my research. The first chapter will
+provide some context to my research and also explain how I reorganized my
+original datasheets after learning about good spreadsheet practices. In the
+second chapter,I demonstrate how I created a database for each aspen seedling.
+In the third chapter, I visualize simulated data to see how to illustrate
+my future results.</p>" />
+  
+
+<meta name="author" content="Sarah Kapel" />
+
+
+<meta name="date" content="2023-04-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="building-the-aspen-seedling-database.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> My Final Project</a></li>
+<li class="chapter" data-level="2" data-path="background-on-my-research-and-re-organizing-my-data.html"><a href="background-on-my-research-and-re-organizing-my-data.html"><i class="fa fa-check"></i><b>2</b> Background on my research and re-organizing my data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="background-on-my-research-and-re-organizing-my-data.html"><a href="background-on-my-research-and-re-organizing-my-data.html#about-my-research"><i class="fa fa-check"></i><b>2.1</b> About my research</a></li>
+<li class="chapter" data-level="2.2" data-path="background-on-my-research-and-re-organizing-my-data.html"><a href="background-on-my-research-and-re-organizing-my-data.html#organizing-my-data"><i class="fa fa-check"></i><b>2.2</b> Organizing my data</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="background-on-my-research-and-re-organizing-my-data.html"><a href="background-on-my-research-and-re-organizing-my-data.html#my-old-data"><i class="fa fa-check"></i><b>2.2.1</b> My old data</a></li>
+<li class="chapter" data-level="2.2.2" data-path="background-on-my-research-and-re-organizing-my-data.html"><a href="background-on-my-research-and-re-organizing-my-data.html#my-new-data"><i class="fa fa-check"></i><b>2.2.2</b> My new data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html"><i class="fa fa-check"></i><b>3</b> Building the aspen seedling database</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#database-structure"><i class="fa fa-check"></i><b>3.1</b> Database structure</a></li>
+<li class="chapter" data-level="3.2" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-database"><i class="fa fa-check"></i><b>3.2</b> Creating the database</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-measurements-table"><i class="fa fa-check"></i><b>3.2.1</b> Creating the measurements table</a></li>
+<li class="chapter" data-level="3.2.2" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-sites-table"><i class="fa fa-check"></i><b>3.2.2</b> Creating the sites table</a></li>
+<li class="chapter" data-level="3.2.3" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-soil-moisture-table"><i class="fa fa-check"></i><b>3.2.3</b> Creating the soil moisture table</a></li>
+<li class="chapter" data-level="3.2.4" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#creating-the-structures-table"><i class="fa fa-check"></i><b>3.2.4</b> Creating the structures table</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="building-the-aspen-seedling-database.html"><a href="building-the-aspen-seedling-database.html#database-is-complete"><i class="fa fa-check"></i><b>3.3</b> Database is complete</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html"><i class="fa fa-check"></i><b>4</b> Simulating data and using ggplot</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#simulating-the-data"><i class="fa fa-check"></i><b>4.1</b> Simulating the data</a></li>
+<li class="chapter" data-level="4.2" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#plotting-the-data-using-ggplot"><i class="fa fa-check"></i><b>4.2</b> Plotting the data using ggplot</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="simulating-data-and-using-ggplot.html"><a href="simulating-data-and-using-ggplot.html#plot-1"><i class="fa fa-check"></i><b>4.2.1</b> Plot 1</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">WILD 6900 Final Project</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="background-on-my-research-and-re-organizing-my-data" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Background on my research and re-organizing my data<a href="background-on-my-research-and-re-organizing-my-data.html#background-on-my-research-and-re-organizing-my-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>In this chapter I will explain my research project. I will also explain how I
+reorganized initial data I complied because I learned some important lessons in
+spreadsheets.</p>
+<div id="about-my-research" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> About my research<a href="background-on-my-research-and-re-organizing-my-data.html#about-my-research" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Aspen are an important foundational forest species. Populations in the west are
+declining due to herbivory, altered disturbance regimes, drought, and climate
+change. Restoration of the species has historically been accomplished by
+clear-felling existing stands to encourage vegetative suckering. This works well
+to regenerate existing clones with healthy rootstock and herbivory pressure is
+low. However, this approach cannot be used where aspen stands do not already
+exist and limits genetic variation. Outplanting with seedlings is an
+understudied aspect of aspen restoration. A major opportunity presented by the
+increase in large fires in the West is planting seedlings in fire footprints.
+For my research project, I will investigate the feasibility of planting aspen
+seedlings in a post-fire environment. This project was conducted in three
+recently burned forests across the Southwest. Seedlings were planted with
+three treatments: 1) in the root pockets of snags, 2) along logs, 3) in open
+spaces. We believe snags may be beneficial because moisture will be wicked to
+the seedlings and there may be higher soil moisture in the root pockets. We will
+investigate what treatments are beneficial to seedling growth and vigor as well
+as azimuth around the structure. We also will investigate differences in soil
+moisture amongst treatments. Finally, this project will look at the efficacy of
+vexar tubing to protect aspen seedlings from herbivory.</p>
+<p>My field work started in the fall of 2022 when I planted ~360 seedlings per
+fire footprint. At this time I recorded information for each
+seedling. This included baseline measurements of the seedlings root collar
+diameter and height. I recorded the seedlings ground cover in various classes
+and information on the nearest woody neighbor within 2 meters. I also took
+information about each treatment and the site. I will come back to each site
+this summer to remeasure those that survive. I will also take soil moisture
+measurements over the summer from data loggers I install.</p>
+</div>
+<div id="organizing-my-data" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Organizing my data<a href="background-on-my-research-and-re-organizing-my-data.html#organizing-my-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Prior to this class, I complied all my digitized paper datasheets onto one
+single excel file. I realized that this would be problematic for many reasons.
+It took time to correct my mistakes, but ultimately it will help me in the long
+run.</p>
+<div id="my-old-data" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> My old data<a href="background-on-my-research-and-re-organizing-my-data.html#my-old-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is a screenshot of how my old data looked.</p>
+<div class="figure">
+<img src="old_data.png" alt="" />
+<p class="caption">Fig. 1: Diagram of database structure</p>
+</div>
+<p>I color coded objects, merged cells, and had multiple sheets.</p>
+</div>
+<div id="my-new-data" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> My new data<a href="background-on-my-research-and-re-organizing-my-data.html#my-new-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>From this class, I learned the error in my ways and I quickly remade my
+datasheets..</p>
+<p>Here is a screenshot of my new data.</p>
+<div class="figure">
+<img src="new_data.png" alt="" />
+<p class="caption">Fig. 1: Diagram of database structure</p>
+</div>
+<p>First, I used csv instead of excel since that is better compatible with R.
+I removed any color coding since that will not translate in R. I also removed
+merged cells since that will cause issues working in R. I also separated all
+pages from the one excel file into various single page csv documents.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="building-the-aspen-seedling-database.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-organization.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

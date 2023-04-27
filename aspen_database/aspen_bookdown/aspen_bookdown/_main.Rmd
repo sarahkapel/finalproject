@@ -1,0 +1,253 @@
+--- 
+title: "WILD 6900 Final Project"
+author: "Sarah Kapel"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+description: |
+  This bookdown contains my final project for Reproducible Science 2023. For 
+  this project, I used my own data from my research. The first chapter will 
+  provide some context to my research and also explain how I reorganized my 
+  original datasheets after learning about good spreadsheet practices. In the 
+  second chapter,I demonstrate how I created a database for each aspen seedling. 
+  In the third chapter, I visualize simulated data to see how to illustrate 
+  my future results. 
+  
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# About
+
+  This bookdown contains my final project for Reproducible Science 2023. For 
+  this project, I used my own data from my research. The first chapter will 
+  provide some context to my research and also explain how I reorganized my 
+  original datasheets after learning about good spreadsheet practices. In the 
+  second chapter,I demonstrate how I created a database for each aspen seedling. 
+  In the third chapter, I visualize simulated data to see how to illustrate 
+  my future results. 
+
+```{r eval=FALSE}
+bookdown::serve_book()
+```
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
+# About my research and re-organizing my data
+
+In this chapter I will explain my research project. I will also explain how I 
+reorganized initial data I complied because I learned some important lessons in
+spreadsheets. 
+
+## About my research
+
+Aspen are an important foundational forest species. Populations in the west are 
+declining due to herbivory, altered disturbance regimes, drought, and climate 
+change. Restoration of the species has historically been accomplished by 
+clear-felling existing stands to encourage vegetative suckering. This works well 
+to regenerate existing clones with healthy rootstock and herbivory pressure is 
+low. However, this approach cannot be used where aspen stands do not already 
+exist and limits genetic variation. Outplanting with seedlings is an 
+understudied aspect of aspen restoration. A major opportunity presented by the 
+increase in large fires in the West is planting seedlings in fire footprints. 
+For my research project, I will investigate the feasibility of planting aspen 
+seedlings in a post-fire environment. This project was conducted in three 
+recently burned forests across the Southwest. Seedlings were planted with 
+three treatments: 1) in the root pockets of snags, 2) along logs, 3) in open 
+spaces. We believe snags may be beneficial because moisture will be wicked to 
+the seedlings and there may be higher soil moisture in the root pockets. We will 
+investigate what treatments are beneficial to seedling growth and vigor as well 
+as azimuth around the structure. We also will investigate differences in soil 
+moisture amongst treatments. Finally, this project will look at the efficacy of 
+vexar tubing to protect aspen seedlings from herbivory. 
+
+My field work started in the fall of 2022 when I planted ~360 seedlings per 
+fire footprint. At this time I recorded information for each 
+seedling. This included baseline measurements of the seedlings root collar
+diameter and height. I recorded the seedlings ground cover in various classes 
+and information on the nearest woody neighbor within 2 meters. I also took 
+information about each treatment and the site. I will come back to each site 
+this summer to remeasure those that survive. I will also take soil moisture 
+measurements over the summer from data loggers I install. 
+
+## Organizing my data 
+
+Prior to this class, I complied all my digitized paper datasheets onto one 
+single excel file. I realized that this would be problematic for many reasons.
+It took time to correct my mistakes, but ultimately it will help me in the long 
+run. 
+
+### My old data 
+
+Here is a screenshot of how my old data looked. 
+
+![Fig. 1: Diagram of database structure](old_data.png)
+
+I color coded objects, merged cells, and had multiple sheets. 
+
+### My new data 
+
+From this class, I learned the error in my ways and I quickly remade my 
+datasheets.. 
+
+Here is a screenshot of my new data. 
+
+![Fig. 1: Diagram of database structure](new_data.png)
+
+
+First, I used csv instead of excel since that is better compatible with R. 
+I removed any color coding since that will not translate in R. I also removed
+merged cells since that will cause issues working in R. I also separated all 
+pages from the one excel file into various single page csv documents. 
+
+<!--chapter:end:01-organization.Rmd-->
+
+# Cross-references {#cross}
+
+Cross-references make it easier for your readers to find and link to elements in your book.
+
+## Chapters and sub-chapters
+
+There are two steps to cross-reference any heading:
+
+1. Label the heading: `# Hello world {#nice-label}`. 
+    - Leave the label off if you like the automated heading generated based on your heading title: for example, `# Hello world` = `# Hello world {#hello-world}`.
+    - To label an un-numbered heading, use: `# Hello world {-#nice-label}` or `{# Hello world .unnumbered}`.
+
+1. Next, reference the labeled heading anywhere in the text using `\@ref(nice-label)`; for example, please see Chapter \@ref(cross). 
+    - If you prefer text as the link instead of a numbered reference use: [any text you want can go here](#cross).
+
+## Captioned figures and tables
+
+Figures and tables *with captions* can also be cross-referenced from elsewhere in your book using `\@ref(fig:chunk-label)` and `\@ref(tab:chunk-label)`, respectively.
+
+See Figure \@ref(fig:nice-fig).
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center', fig.alt='Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases.'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Don't miss Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(pressure, 10), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+<!--chapter:end:02-database.Rmd-->
+
+# Simulating data and using ggplot 
+
+In this chapter, I will show how I used simulated data to visualize some "fake"
+findings. 
+
+## Simulating the data 
+
+First I simulated data to run. Below is very simple code I used to create
+some data. I first manipulated the data using a binomial distribution. This 
+randomly selected some seedlings to survive and some to die. Of those that 
+survived, I increased the height by 40% and the RCD by 30%. Then I manually 
+added more weight to the snag treatment. 
+
+```{r dummydata, eval = TRUE, echo = TRUE, warning = FALSE, message = FALSE}
+
+# load packages 
+
+library(tidyverse)
+library(lme4)
+
+horton_man <- read.csv("horton_man.csv") %>%
+  filter(is.na(site_no)== FALSE)
+
+# this is remnant code on how I did that: 
+# horton_man <- horton %>%
+  # mutate(measurement_id = case_when(tag_id != "NA" ~  paste0(tag_id,"-02")),
+        # status = rbinom(n=350,prob = .75, size = 1),
+        # height = case_when(status==1 ~ height*1.4, # increase height by 40%
+                          #  status==0 ~ height),
+        # rcd = case_when(status == 1 ~ rcd*1.3, # increase rcd by 30%
+                        # status == 0 ~ rcd)) %>% 
+  # filter(is.na(site_no) == FALSE)
+
+```
+
+## Plotting the data using ggplot 
+
+### Plot 1 
+
+Below is the code I used to generate a bar plot displaying how many seedlings 
+survived in each treatment group. This is a simple plot but it does display what
+treatment yielded the most seedling survival. 
+
+```{r ggplot, eval = TRUE, echo = TRUE, warning = FALSE, message = FALSE}
+
+library(ggplot2)
+library(viridis)
+
+horton_man %>% 
+  as_tibble() %>% 
+  filter(status == 1) %>% 
+  ggplot(aes(x = structure, fill = status)) + 
+  geom_bar(fill = "light blue") + 
+  labs (x = "Treatment", y = "Count",
+        title = "Seedling Survival by Treatment") + 
+  theme_light() 
+
+```
+### Plot 2
+
+Below is code I used to plot the root collar diameter and height of each 
+seedling in the Horton fire. I wanted to compare growth of those that survive 
+from the time of planting to the second year. 
+
+```{r ggplot2, eval = TRUE, echo = TRUE, warning = FALSE, message = FALSE}
+
+library(viridis)
+library(patchwork)
+
+p1 <- horton_man %>% 
+  as_tibble() %>% 
+  filter(status == 1) %>% 
+  ggplot(aes(x = rcd, y = height, color = tag_id)) + 
+  geom_point(alpha = 0.7)+
+  facet_wrap(~structure) +
+  labs(x = "Root Collar Diameter (mm)", 
+       y = "Height to Terminal Bud (mm)", 
+       title = "Year 1") +
+  theme_light() + 
+  theme(legend.position = "none") +  
+  scale_fill_viridis(option = "magma") 
+
+p2 <- horton_man %>% 
+  as_tibble() %>% 
+  filter(status == 1) %>% 
+  ggplot(aes(x = rcd_2, y = height_2, color = tag_id)) + 
+  geom_point(alpha = 0.7)+
+  facet_wrap(~structure) +
+  labs(x = "Root Collar Diameter (mm)", 
+       y = "Height to Terminal Bud (mm)", 
+       title = "Year 2") +
+  theme_light() + 
+  theme(legend.position = "none") +  
+  scale_fill_viridis(option = "magma") 
+
+p1 | p2
+  
+```
+
+
+<!--chapter:end:03-plots.Rmd-->
+
